@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block tituloPagina%} 
+Buscar socio
+{%endblock%}
+
+{%block contenidoPagina%}
+<p>Buscar socio por apellido:
+    <form action="" method="post">
+    {%csrf_token%}
+
+        <input type="text" name="apellido" id="">
+
+        <input type="submit" id="Buscar">
+
+    </form> 
+</p>
+<p>Resultados:</p>
+    <ul>
+        {%for x in apellido%}
+            <li> {{x.nombre}} <br> [{{x.apellido}}] <br> {{x.email}} <br> {{x.edad}} </li>
+        {%endfor%}
+    </ul>
+{%endblock%}

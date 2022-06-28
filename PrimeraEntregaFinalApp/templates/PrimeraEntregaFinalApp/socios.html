@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block tituloPagina%} 
+Socios
+{%endblock%}
+
+{%block contenidoPagina%}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-3">
+                <div class="title"><a href = "{% url 'buscar_apellido_socio' %}">-Buscar socio por apellido<a/></div>
+                <div class="title">Los socios del club son:</div>
+                <ul class="list-group">
+                    {% for socio in socios %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        {{socio.nombre}}
+                        <br>
+                        {{socio.apellido}}
+                        <br>
+                        {{socio.email}}
+                        <br>
+                        {{socio.deportes}} 
+                        <br>                                               
+                        <span class="badge bg-success rounded-pill">{{socio.edad}}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="title"><a href = "{% url 'crear_socio' %}">+Crear socio nuevo</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
